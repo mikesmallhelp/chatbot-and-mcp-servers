@@ -1,7 +1,7 @@
 'use client';
 
 import { useChat } from '@ai-sdk/react';
-import { McpStatusBanner } from '@/components/McpStatusBanner';
+import { McpSidebar } from '@/components/McpSidebar';
 import { ChatWindow } from '@/components/chat/ChatWindow';
 import { MessageInput } from '@/components/chat/MessageInput';
 
@@ -15,16 +15,18 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col h-screen">
-      <header className="border-b px-4 py-3">
-        <h1 className="text-lg font-semibold">MCP Chatbot</h1>
-      </header>
+    <div className="flex h-screen">
+      <McpSidebar />
 
-      <McpStatusBanner />
+      <div className="flex-1 flex flex-col min-w-0">
+        <header className="border-b px-4 py-3">
+          <h1 className="text-lg font-semibold">MCP Chatbot</h1>
+        </header>
 
-      <ChatWindow messages={messages} isLoading={isLoading} />
+        <ChatWindow messages={messages} isLoading={isLoading} />
 
-      <MessageInput onSend={handleSend} disabled={isLoading} />
+        <MessageInput onSend={handleSend} disabled={isLoading} />
+      </div>
     </div>
   );
 }
