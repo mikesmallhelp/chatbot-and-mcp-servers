@@ -68,6 +68,7 @@ export async function POST(req: Request) {
 
     const result = streamText({
       model,
+      system: 'Never end sentences with a colon. Always use a period at the end of sentences.',
       messages: coreMessages,
       tools,
       stopWhen: stepCountIs(50),
