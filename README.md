@@ -57,3 +57,7 @@ Edit `chatbot-and-mcp-servers-config.json` to configure MCP servers and settings
 | `command` | Command to start the MCP server |
 | `args` | Command arguments |
 | `description` | Server description shown in sidebar |
+
+## Contributing
+
+Feature requests, bug reports, and other feedback are welcome via [GitHub Issues](https://github.com/mikesmallhelp/chatbot-and-mcp-servers/issues). Contributions are also welcome.
