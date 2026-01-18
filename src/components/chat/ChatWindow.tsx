@@ -10,9 +10,10 @@ interface ChatWindowProps {
   isLoading?: boolean;
   onStop?: () => void;
   wasStopped?: boolean;
+  maxStepsReached?: boolean;
 }
 
-export function ChatWindow({ messages, isLoading, onStop, wasStopped }: ChatWindowProps) {
+export function ChatWindow({ messages, isLoading, onStop, wasStopped, maxStepsReached }: ChatWindowProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -42,6 +43,7 @@ export function ChatWindow({ messages, isLoading, onStop, wasStopped }: ChatWind
           const isAssistant = message.role === 'assistant';
           const showStreaming = isLoading && isLastMessage && isAssistant;
           const showStopped = wasStopped && isLastMessage && isAssistant && !isLoading;
+          const showMaxStepsReached = maxStepsReached && isLastMessage && isAssistant && !isLoading;
 
           return (
             <Message
@@ -50,6 +52,7 @@ export function ChatWindow({ messages, isLoading, onStop, wasStopped }: ChatWind
               isStreaming={showStreaming}
               onStop={onStop}
               wasStopped={showStopped}
+              maxStepsReached={showMaxStepsReached}
             />
           );
         })}

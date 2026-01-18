@@ -1,4 +1,4 @@
-import { User, Bot, Loader2, Square, StopCircle } from 'lucide-react';
+import { User, Bot, Loader2, Square, StopCircle, AlertCircle } from 'lucide-react';
 import { ToolCallCard } from './ToolCallCard';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -9,6 +9,7 @@ interface MessageProps {
   isStreaming?: boolean;
   onStop?: () => void;
   wasStopped?: boolean;
+  maxStepsReached?: boolean;
 }
 
 interface MessagePart {
@@ -22,7 +23,7 @@ interface MessagePart {
   };
 }
 
-export function Message({ message, isStreaming, onStop, wasStopped }: MessageProps) {
+export function Message({ message, isStreaming, onStop, wasStopped, maxStepsReached }: MessageProps) {
   const isUser = message.role === 'user';
 
   // Extract parts in order
@@ -137,6 +138,21 @@ export function Message({ message, isStreaming, onStop, wasStopped }: MessagePro
                 <div className="flex items-center gap-2 text-orange-600 dark:text-orange-400">
                   <StopCircle className="h-4 w-4" />
                   <span className="text-sm">Stopped by user</span>
+                </div>
+              </Card>
+            )}
+
+            {/* Max steps reached indicator */}
+            {maxStepsReached && (
+              <Card className="p-3 border-orange-300 bg-orange-50 dark:bg-orange-950/20">
+                <div className="flex items-center gap-2 text-orange-600 dark:text-orange-400">
+                  <AlertCircle className="h-4 w-4" />
+                  <span className="text-sm">
+                    Per-question step limit exceeded. If needed, update the limit in{' '}
+                    <code className="bg-orange-100 dark:bg-orange-900/30 px-1 py-0.5 rounded text-xs">
+                      chatbot-and-mcp-servers-config.json.
+                    </code>
+                  </span>
                 </div>
               </Card>
             )}

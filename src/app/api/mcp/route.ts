@@ -17,6 +17,7 @@ export async function GET() {
       })),
       tools: tools,
       totalTools: tools.length,
+      maxSteps: config.maxSteps,
     };
 
     logger.info('MCP status response', response);
