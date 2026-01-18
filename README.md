@@ -36,13 +36,11 @@ Edit `chatbot-and-mcp-servers-config.json` to configure MCP servers and settings
   "mcpServers": {
     "playwright": {
       "command": "npx",
-      "args": ["@playwright/mcp@latest"],
-      "description": "Browser testing and automation"
+      "args": ["@playwright/mcp@latest"]
     },
     "filesystem": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/folder"],
-      "description": "Filesystem operations"
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/folder"]
     }
   }
 }
@@ -56,7 +54,6 @@ Edit `chatbot-and-mcp-servers-config.json` to configure MCP servers and settings
 | `mcpServers` | MCP server configurations |
 | `command` | Command to start the MCP server |
 | `args` | Command arguments |
-| `description` | Server description shown in sidebar |
 
 ## Contributing
 

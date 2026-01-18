@@ -3,8 +3,7 @@
   "mcpServers": {
     "playwright": {
       "command": "npx",
-      "args": ["@playwright/mcp@latest"],
-      "description": "Browser testing and automation"
+      "args": ["@playwright/mcp@latest"]
     },
     "filesystem": {
       "command": "npx",
@@ -13,8 +12,7 @@
         "@modelcontextprotocol/server-filesystem",
         "/home/lenovo/testing",
         "/home/lenovo/testing2"
-      ],
-      "description": "Filesystem operations"
+      ]
     }
   }
 }

@@ -13,7 +13,6 @@ interface McpServer {
   name: string;
   status: 'connected' | 'error' | 'disconnected';
   toolCount: number;
-  description: string;
   error?: string;
 }
 

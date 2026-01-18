@@ -24,7 +24,3 @@ export async function loadMcpConfig(): Promise<McpConfig> {
 export function getServerNames(config: McpConfig): string[] {
   return Object.keys(config.mcpServers);
 }
-
-export function getServerDescription(config: McpConfig, serverName: string): string {
-  return config.mcpServers[serverName]?.description || serverName;
-}

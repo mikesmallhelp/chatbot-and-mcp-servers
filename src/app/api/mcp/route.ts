@@ -1,5 +1,5 @@
 import { mcpClient } from '@/lib/mcp/client';
-import { loadMcpConfig, getServerDescription } from '@/lib/mcp/config';
+import { loadMcpConfig } from '@/lib/mcp/config';
 import { logger } from '@/lib/logger';
 
 export async function GET() {
@@ -11,10 +11,7 @@ export async function GET() {
     const tools = mcpClient.getToolsList();
 
     const response = {
-      servers: statuses.map(s => ({
-        ...s,
-        description: getServerDescription(config, s.name),
-      })),
+      servers: statuses,
       tools: tools,
       totalTools: tools.length,
       maxSteps: config.maxSteps,
