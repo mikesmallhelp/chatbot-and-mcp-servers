@@ -2,7 +2,7 @@ import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js';
 import { loadMcpConfig } from './config';
 import { logger } from '../logger';
-import type { McpServerStatus, McpTool, McpConfig } from './types';
+import type { McpServerStatus, McpTool } from './types';
 import { tool } from 'ai';
 import type { Tool } from 'ai';
 import { z } from 'zod';
@@ -97,7 +97,7 @@ class McpClientManager {
   getServerStatuses(): McpServerStatus[] {
     const statuses: McpServerStatus[] = [];
 
-    for (const [serverName, connection] of this.connections) {
+    for (const [serverName] of this.connections) {
       const toolCount = Array.from(this.tools.values())
         .filter(t => t.serverName === serverName).length;
 
