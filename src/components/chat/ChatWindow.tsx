@@ -23,10 +23,9 @@ export function ChatWindow({ messages, isLoading }: ChatWindowProps) {
     return (
       <div className="flex-1 flex items-center justify-center p-8">
         <div className="text-center max-w-md">
-          <h2 className="text-xl font-semibold mb-2">Tervetuloa MCP Chatbottiin</h2>
+          <h2 className="text-xl font-semibold mb-2">Welcome to MCP Chatbot</h2>
           <p className="text-muted-foreground text-sm">
-            Voit antaa komentoja ja käyttää konfiguroituja MCP-servereitä.
-            Kokeile esimerkiksi pyytää avaamaan verkkosivu tai käsittelemään tiedostoja.
+            You can give commands and use configured MCP servers.
           </p>
         </div>
       </div>
@@ -47,8 +46,8 @@ export function ChatWindow({ messages, isLoading }: ChatWindowProps) {
                 <div className="h-4 w-4 border-2 border-muted-foreground border-t-transparent rounded-full animate-spin" />
               </div>
               <div className="flex-1">
-                <p className="text-sm font-medium">Assistentti</p>
-                <p className="text-sm text-muted-foreground">Ajattelee...</p>
+                <p className="text-sm font-medium">Assistant</p>
+                <p className="text-sm text-muted-foreground">Thinking...</p>
               </div>
             </div>
           </div>

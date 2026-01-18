@@ -31,30 +31,30 @@ export function ToolCallCard({ toolName, args, result, status }: ToolCallCardPro
   const getStatusText = () => {
     switch (status) {
       case 'pending':
-        return 'Odottaa...';
+        return 'Pending...';
       case 'running':
-        return 'Suoritetaan...';
+        return 'Running...';
       case 'completed':
-        return 'Valmis';
+        return 'Completed';
       case 'error':
-        return 'Virhe';
+        return 'Error';
     }
   };
 
   const getFriendlyDescription = () => {
     const descriptions: Record<string, string> = {
-      browser_navigate: 'Navigoidaan selaimella',
-      browser_snapshot: 'Otetaan kuvakaappaus',
-      browser_click: 'Klikataan elementtiä',
-      browser_type: 'Kirjoitetaan tekstiä',
-      browser_scroll: 'Vieritetään sivua',
-      browser_close: 'Suljetaan selain',
-      read_file: 'Luetaan tiedostoa',
-      write_file: 'Kirjoitetaan tiedostoon',
-      list_directory: 'Listataan hakemisto',
+      browser_navigate: 'Navigating browser',
+      browser_snapshot: 'Taking snapshot',
+      browser_click: 'Clicking element',
+      browser_type: 'Typing text',
+      browser_scroll: 'Scrolling page',
+      browser_close: 'Closing browser',
+      read_file: 'Reading file',
+      write_file: 'Writing to file',
+      list_directory: 'Listing directory',
     };
 
-    return descriptions[actualToolName] || `Käytetään työkalua: ${actualToolName}`;
+    return descriptions[actualToolName] || `Using tool: ${actualToolName}`;
   };
 
   return (
@@ -78,7 +78,7 @@ export function ToolCallCard({ toolName, args, result, status }: ToolCallCardPro
           {args && Object.keys(args).length > 0 && status !== 'completed' && (
             <details className="mt-2">
               <summary className="text-xs text-muted-foreground cursor-pointer hover:text-foreground">
-                Näytä parametrit
+                Show parameters
               </summary>
               <pre className="mt-1 text-xs bg-muted p-2 rounded overflow-x-auto">
                 {JSON.stringify(args, null, 2)}
@@ -89,7 +89,7 @@ export function ToolCallCard({ toolName, args, result, status }: ToolCallCardPro
           {result !== undefined && result !== null && status === 'completed' && (
             <details className="mt-2">
               <summary className="text-xs text-muted-foreground cursor-pointer hover:text-foreground">
-                Näytä tulos
+                Show result
               </summary>
               <pre className="mt-1 text-xs bg-muted p-2 rounded overflow-x-auto max-h-32">
                 {typeof result === 'string' ? result : JSON.stringify(result, null, 2)}

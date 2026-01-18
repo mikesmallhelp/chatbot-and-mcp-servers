@@ -44,7 +44,7 @@ export function McpStatusBanner() {
       <div className="bg-muted/50 border-b px-4 py-3 flex items-center gap-2">
         <Loader2 className="h-4 w-4 animate-spin" />
         <span className="text-sm text-muted-foreground">
-          Yhdistetään MCP-servereihin...
+          Connecting to MCP servers...
         </span>
       </div>
     );
@@ -55,7 +55,7 @@ export function McpStatusBanner() {
       <div className="bg-destructive/10 border-b border-destructive/20 px-4 py-3 flex items-center gap-2">
         <XCircle className="h-4 w-4 text-destructive" />
         <span className="text-sm text-destructive">
-          MCP-yhteys epäonnistui: {error}
+          MCP connection failed: {error}
         </span>
       </div>
     );
@@ -65,9 +65,9 @@ export function McpStatusBanner() {
     return (
       <div className="bg-muted/50 border-b px-4 py-3">
         <p className="text-sm text-muted-foreground">
-          Ei MCP-servereitä konfiguroitu. Lisää servereitä{' '}
+          No MCP servers configured. Add servers to{' '}
           <code className="bg-muted px-1 py-0.5 rounded text-xs">mcp-servers.json</code>
-          {' '}tiedostoon.
+          {' '}file.
         </p>
       </div>
     );
@@ -81,7 +81,7 @@ export function McpStatusBanner() {
       <div className="flex items-center gap-2 flex-wrap">
         <span className="text-sm font-medium flex items-center gap-1.5">
           <Wrench className="h-4 w-4" />
-          MCP-serverit:
+          MCP Servers:
         </span>
 
         {connectedServers.map(server => (
@@ -93,7 +93,7 @@ export function McpStatusBanner() {
             <CheckCircle className="h-3 w-3 text-green-600" />
             {server.name}
             <span className="text-muted-foreground">
-              ({server.toolCount} työkalua)
+              ({server.toolCount} tools)
             </span>
           </Badge>
         ))}
@@ -111,7 +111,7 @@ export function McpStatusBanner() {
 
         {status.totalTools > 0 && (
           <span className="text-xs text-muted-foreground ml-auto">
-            Yhteensä {status.totalTools} työkalua käytettävissä
+            {status.totalTools} tools available
           </span>
         )}
       </div>

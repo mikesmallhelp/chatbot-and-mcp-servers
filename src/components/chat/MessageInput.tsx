@@ -35,13 +35,13 @@ export function MessageInput({ onSend, disabled }: MessageInputProps) {
           ref={inputRef}
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          placeholder="Kirjoita viesti..."
+          placeholder="Type a message..."
           disabled={disabled}
           className="flex-1"
         />
         <Button type="submit" disabled={disabled || !value.trim()}>
           <Send className="h-4 w-4" />
-          <span className="sr-only">Lähetä</span>
+          <span className="sr-only">Send</span>
         </Button>
       </div>
     </form>
