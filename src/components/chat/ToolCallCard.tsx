@@ -41,29 +41,13 @@ export function ToolCallCard({ toolName, args, result, status }: ToolCallCardPro
     }
   };
 
-  const getFriendlyDescription = () => {
-    const descriptions: Record<string, string> = {
-      browser_navigate: 'Navigating browser',
-      browser_snapshot: 'Taking snapshot',
-      browser_click: 'Clicking element',
-      browser_type: 'Typing text',
-      browser_scroll: 'Scrolling page',
-      browser_close: 'Closing browser',
-      read_file: 'Reading file',
-      write_file: 'Writing to file',
-      list_directory: 'Listing directory',
-    };
-
-    return descriptions[actualToolName] || `Using tool: ${actualToolName}`;
-  };
-
   return (
     <Card className="p-3 my-2 bg-muted/30">
       <div className="flex items-start gap-2">
         <Wrench className="h-4 w-4 mt-0.5 text-muted-foreground" />
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="text-sm font-medium">{getFriendlyDescription()}</span>
+            <span className="text-sm font-medium">{actualToolName}</span>
             {serverName && (
               <Badge variant="outline" className="text-xs">
                 {serverName}
