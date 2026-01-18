@@ -17,7 +17,7 @@ export function ChatWindow({ messages, isLoading }: ChatWindowProps) {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
-  }, [messages]);
+  }, [messages, isLoading]);
 
   if (messages.length === 0) {
     return (
@@ -35,23 +35,19 @@ export function ChatWindow({ messages, isLoading }: ChatWindowProps) {
   return (
     <ScrollArea className="flex-1" ref={scrollRef}>
       <div className="divide-y">
-        {messages.map((message) => (
-          <Message key={message.id} message={message} />
-        ))}
+        {messages.map((message, index) => {
+          const isLastMessage = index === messages.length - 1;
+          const isAssistant = message.role === 'assistant';
+          const showStreaming = isLoading && isLastMessage && isAssistant;
 
-        {isLoading && (
-          <div className="p-4 bg-muted/30">
-            <div className="flex gap-3">
-              <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center">
-                <div className="h-4 w-4 border-2 border-muted-foreground border-t-transparent rounded-full animate-spin" />
-              </div>
-              <div className="flex-1">
-                <p className="text-sm font-medium">Assistant</p>
-                <p className="text-sm text-muted-foreground">Thinking...</p>
-              </div>
-            </div>
-          </div>
-        )}
+          return (
+            <Message
+              key={message.id}
+              message={message}
+              isStreaming={showStreaming}
+            />
+          );
+        })}
       </div>
     </ScrollArea>
   );
