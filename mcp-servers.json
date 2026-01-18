@@ -4,6 +4,16 @@
       "command": "npx",
       "args": ["@playwright/mcp@latest"],
       "description": "Browser testing and automation"
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/home/lenovo/testing",
+        "/home/lenovo/testing2"
+      ],
+      "description": "Filesystem operations"
     }
   }
 }

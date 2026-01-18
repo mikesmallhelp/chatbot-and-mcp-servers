@@ -70,7 +70,7 @@ export async function POST(req: Request) {
       model,
       messages: coreMessages,
       tools,
-      stopWhen: stepCountIs(15),
+      stopWhen: stepCountIs(50),
     });
 
     return result.toUIMessageStreamResponse();
