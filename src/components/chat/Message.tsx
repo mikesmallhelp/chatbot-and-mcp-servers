@@ -1,11 +1,14 @@
-import { User, Bot, Loader2 } from 'lucide-react';
+import { User, Bot, Loader2, Square, StopCircle } from 'lucide-react';
 import { ToolCallCard } from './ToolCallCard';
 import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import type { UIMessage } from 'ai';
 
 interface MessageProps {
   message: UIMessage;
   isStreaming?: boolean;
+  onStop?: () => void;
+  wasStopped?: boolean;
 }
 
 interface MessagePart {
@@ -19,7 +22,7 @@ interface MessagePart {
   };
 }
 
-export function Message({ message, isStreaming }: MessageProps) {
+export function Message({ message, isStreaming, onStop, wasStopped }: MessageProps) {
   const isUser = message.role === 'user';
 
   // Extract parts in order
@@ -108,9 +111,32 @@ export function Message({ message, isStreaming }: MessageProps) {
             {/* Loading indicator when streaming */}
             {isStreaming && (
               <Card className="p-3 border-dashed">
-                <div className="flex items-center gap-2 text-muted-foreground">
-                  <Loader2 className="h-4 w-4 animate-spin" />
-                  <span className="text-sm">Thinking...</span>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2 text-muted-foreground">
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    <span className="text-sm">Thinking...</span>
+                  </div>
+                  {onStop && (
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={onStop}
+                      className="h-7 px-2 text-xs"
+                    >
+                      <Square className="h-3 w-3 mr-1" />
+                      Stop
+                    </Button>
+                  )}
+                </div>
+              </Card>
+            )}
+
+            {/* Stopped indicator */}
+            {wasStopped && (
+              <Card className="p-3 border-orange-300 bg-orange-50 dark:bg-orange-950/20">
+                <div className="flex items-center gap-2 text-orange-600 dark:text-orange-400">
+                  <StopCircle className="h-4 w-4" />
+                  <span className="text-sm">Stopped by user</span>
                 </div>
               </Card>
             )}

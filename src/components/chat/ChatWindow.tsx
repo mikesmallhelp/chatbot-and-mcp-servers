@@ -8,9 +8,11 @@ import type { UIMessage } from 'ai';
 interface ChatWindowProps {
   messages: UIMessage[];
   isLoading?: boolean;
+  onStop?: () => void;
+  wasStopped?: boolean;
 }
 
-export function ChatWindow({ messages, isLoading }: ChatWindowProps) {
+export function ChatWindow({ messages, isLoading, onStop, wasStopped }: ChatWindowProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -39,12 +41,15 @@ export function ChatWindow({ messages, isLoading }: ChatWindowProps) {
           const isLastMessage = index === messages.length - 1;
           const isAssistant = message.role === 'assistant';
           const showStreaming = isLoading && isLastMessage && isAssistant;
+          const showStopped = wasStopped && isLastMessage && isAssistant && !isLoading;
 
           return (
             <Message
               key={message.id}
               message={message}
               isStreaming={showStreaming}
+              onStop={onStop}
+              wasStopped={showStopped}
             />
           );
         })}
