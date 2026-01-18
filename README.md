@@ -13,8 +13,11 @@ A chatbot application that integrates with Model Context Protocol (MCP) servers,
 
 2. Set up environment variables in `.env.local`:
    ```
+   AI_GATEWAY_API_KEY=your-api-key-here
    AI_GATEWAY_MODEL=openai/gpt-4o-mini
    ```
+
+   The application uses [Vercel AI Gateway](https://vercel.com/docs/ai-gateway). Get your API key from the Vercel dashboard.
 
 3. Run the development server:
    ```bash
