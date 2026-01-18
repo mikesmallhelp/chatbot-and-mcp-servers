@@ -4,6 +4,7 @@ export const McpServerSchema = z.object({
   command: z.string(),
   args: z.array(z.string()).optional().default([]),
   env: z.record(z.string(), z.string()).optional(),
+  description: z.string().optional(),
 });
 
 export const McpConfigSchema = z.object({

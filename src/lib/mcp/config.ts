@@ -25,16 +25,6 @@ export function getServerNames(config: McpConfig): string[] {
   return Object.keys(config.mcpServers);
 }
 
-export function getServerDescription(serverName: string): string {
-  const descriptions: Record<string, string> = {
-    playwright: 'Selaintestaus ja automaatio',
-    filesystem: 'Tiedostojärjestelmän käsittely',
-    github: 'GitHub-integraatio',
-    postgres: 'PostgreSQL-tietokanta',
-    sqlite: 'SQLite-tietokanta',
-    fetch: 'HTTP-pyynnöt',
-    memory: 'Muistinhallinta',
-  };
-
-  return descriptions[serverName] || serverName;
+export function getServerDescription(config: McpConfig, serverName: string): string {
+  return config.mcpServers[serverName]?.description || serverName;
 }

@@ -1,18 +1,19 @@
 import { mcpClient } from '@/lib/mcp/client';
-import { getServerDescription } from '@/lib/mcp/config';
+import { loadMcpConfig, getServerDescription } from '@/lib/mcp/config';
 import { logger } from '@/lib/logger';
 
 export async function GET() {
   try {
     logger.info('MCP status request received');
 
+    const config = await loadMcpConfig();
     const statuses = await mcpClient.initialize();
     const tools = mcpClient.getToolsList();
 
     const response = {
       servers: statuses.map(s => ({
         ...s,
-        description: getServerDescription(s.name),
+        description: getServerDescription(config, s.name),
       })),
       tools: tools,
       totalTools: tools.length,

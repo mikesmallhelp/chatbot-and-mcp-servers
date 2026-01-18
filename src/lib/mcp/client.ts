@@ -1,6 +1,6 @@
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js';
-import { loadMcpConfig, getServerDescription } from './config';
+import { loadMcpConfig } from './config';
 import { logger } from '../logger';
 import type { McpServerStatus, McpTool, McpConfig } from './types';
 import { tool } from 'ai';
