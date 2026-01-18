@@ -2,7 +2,7 @@ import { McpConfigSchema, type McpConfig } from './types';
 import fs from 'fs/promises';
 import path from 'path';
 
-const CONFIG_FILE = 'mcp-servers.json';
+const CONFIG_FILE = 'chatbot-and-mcp-servers-config.json';
 
 export async function loadMcpConfig(): Promise<McpConfig> {
   const configPath = path.join(process.cwd(), CONFIG_FILE);
@@ -15,7 +15,7 @@ export async function loadMcpConfig(): Promise<McpConfig> {
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
       // Return empty config if file doesn't exist
-      return { mcpServers: {} };
+      return { maxSteps: 50, mcpServers: {} };
     }
     throw error;
   }

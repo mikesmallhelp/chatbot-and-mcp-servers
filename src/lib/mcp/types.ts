@@ -8,6 +8,7 @@ export const McpServerSchema = z.object({
 });
 
 export const McpConfigSchema = z.object({
+  maxSteps: z.number().optional().default(50),
   mcpServers: z.record(z.string(), McpServerSchema),
 });
 

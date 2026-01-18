@@ -1,4 +1,5 @@
 {
+  "maxSteps": 5,
   "mcpServers": {
     "playwright": {
       "command": "npx",

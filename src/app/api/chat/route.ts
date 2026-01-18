@@ -1,5 +1,6 @@
 import { streamText, stepCountIs } from 'ai';
 import { mcpClient } from '@/lib/mcp/client';
+import { loadMcpConfig } from '@/lib/mcp/config';
 import { logger } from '@/lib/logger';
 
 export const maxDuration = 60;
@@ -55,6 +56,9 @@ export async function POST(req: Request) {
     // Convert UI messages to core messages
     const coreMessages = convertToCoreMessages(messages);
 
+    // Load config
+    const config = await loadMcpConfig();
+
     // Ensure MCP client is initialized
     await mcpClient.initialize();
 
@@ -71,7 +75,7 @@ export async function POST(req: Request) {
       system: 'Never end sentences with a colon. Always use a period at the end of sentences.',
       messages: coreMessages,
       tools,
-      stopWhen: stepCountIs(50),
+      stopWhen: stepCountIs(config.maxSteps),
     });
 
     return result.toUIMessageStreamResponse();
