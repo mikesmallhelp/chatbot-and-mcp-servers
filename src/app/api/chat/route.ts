@@ -69,15 +69,12 @@ export async function POST(req: Request) {
     logger.info(`Using ${toolCount} tools from MCP servers`);
 
     const model = process.env.AI_GATEWAY_MODEL || 'openai/gpt-4o-mini';
-    const systemPrompt = 'Never end sentences with a colon. Always use a period at the end of sentences.';
 
     // Log all prompts sent to LLM
-    logger.info('System prompt', { system: systemPrompt });
     logger.info('Messages sent to LLM', { messages: coreMessages });
 
     const result = streamText({
       model,
-      system: systemPrompt,
       messages: coreMessages,
       tools,
       stopWhen: stepCountIs(config.maxSteps),
