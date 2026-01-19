@@ -58,3 +58,11 @@ Edit `chatbot-and-mcp-servers-config.json` to configure MCP servers and settings
 ## Contributing
 
 Feature requests, bug reports, and other feedback are welcome via [GitHub Issues](https://github.com/mikesmallhelp/chatbot-and-mcp-servers/issues). Contributions are also welcome.
+
+## Notes
+
+1. **Anthropic models**: Sentences may occasionally end with a colon. This is a known behavior from the training data.
+
+2. **OpenAI and other providers**: Only the final result is shown to the user, without listing intermediate steps. This is because these models summarize the steps.
+
+3. **No user confirmation**: The tool executes all tasks directly without asking for user permission.
