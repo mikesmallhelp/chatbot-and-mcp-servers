@@ -4,6 +4,15 @@ A chatbot application that integrates with Model Context Protocol (MCP) servers,
 
 ![UI Screenshot](doc/ui.png)
 
+## Tech Stack
+
+- TypeScript
+- Next.js
+- shadcn/ui
+- Tailwind CSS
+- Vercel AI SDK
+- Vercel AI Gateway
+
 ## Quick Start
 
 1. Install dependencies:
