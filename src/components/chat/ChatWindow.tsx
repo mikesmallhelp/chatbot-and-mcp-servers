@@ -27,8 +27,11 @@ export function ChatWindow({ messages, isLoading, onStop, wasStopped, maxStepsRe
       <div className="flex-1 flex items-center justify-center p-8">
         <div className="text-center max-w-md">
           <h2 className="text-xl font-semibold mb-2">Welcome to MCP Chatbot</h2>
-          <p className="text-muted-foreground text-sm">
+          <p className="text-muted-foreground text-sm mb-2">
             You can give commands and use configured MCP servers.
+          </p>
+          <p className="text-muted-foreground text-sm">
+            The tool executes all possible tasks without asking for permission. You can stop the execution at any time using the Stop button.
           </p>
         </div>
       </div>

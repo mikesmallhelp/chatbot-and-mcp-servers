@@ -61,6 +61,4 @@ Feature requests, bug reports, and other feedback are welcome via [GitHub Issues
 
 ## Notes
 
-1. **OpenAI and other providers**: Only the final result is shown to the user, without listing intermediate steps. This is because these models summarize the steps.
-
-2. **No user confirmation**: The tool executes all tasks directly without asking for user permission.
+Many language models bundle all tasks together and don't report intermediate steps. This doesn't apply to Anthropic's language models, which report what they're doing between steps.
