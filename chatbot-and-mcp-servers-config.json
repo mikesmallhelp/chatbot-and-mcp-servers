@@ -10,8 +10,7 @@
       "args": [
         "-y",
         "@modelcontextprotocol/server-filesystem",
-        "/home/lenovo/testing",
-        "/home/lenovo/testing2"
+        "/path/to/folder"
       ]
     }
   }
