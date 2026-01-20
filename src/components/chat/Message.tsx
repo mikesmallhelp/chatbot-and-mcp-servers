@@ -115,7 +115,7 @@ export function Message({ message, isStreaming, onStop, wasStopped, maxStepsReac
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2 text-muted-foreground">
                     <Loader2 className="h-4 w-4 animate-spin" />
-                    <span className="text-sm">Thinking...</span>
+                    <span className="text-sm">Thinking and doing...</span>
                   </div>
                   {onStop && (
                     <Button
