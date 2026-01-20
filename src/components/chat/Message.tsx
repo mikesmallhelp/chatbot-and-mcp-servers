@@ -23,6 +23,18 @@ interface MessagePart {
   };
 }
 
+// Replace trailing colon with period for single-line text only
+// Anthropic's language models tend to end sentences with colons before tool calls
+// Multi-line text is not modified (colons before lists are intentional)
+function replaceTrailingColon(text: string): string {
+  const trimmed = text.trim();
+  // Only replace if text is a single line ending with colon
+  if (!trimmed.includes('\n') && trimmed.endsWith(':')) {
+    return text.replace(/:(\s*)$/, '.$1');
+  }
+  return text;
+}
+
 export function Message({ message, isStreaming, onStop, wasStopped, maxStepsReached }: MessageProps) {
   const isUser = message.role === 'user';
 
@@ -34,7 +46,7 @@ export function Message({ message, isStreaming, onStop, wasStopped, maxStepsReac
       if (part.type === 'text') {
         const text = (part as { type: 'text'; text: string }).text;
         if (text.trim()) {
-          parts.push({ type: 'text', content: text });
+          parts.push({ type: 'text', content: replaceTrailingColon(text) });
         }
       } else if (part.type.startsWith('tool-')) {
         const toolPart = part as {
